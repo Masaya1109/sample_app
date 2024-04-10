@@ -68,15 +68,16 @@ Rails.application.configure do
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   config.action_mailer.raise_delivery_errors = true
   config.action_mailer.delivery_method = :smtp
-  host = 'sample-app-3huk.onrender.com'
+  host = 'sample-app-3huk.onrender.com' # ここにあなたのアプリのホスト名を設定してください
   config.action_mailer.default_url_options = { host: host }
+  
   ActionMailer::Base.smtp_settings = {
-    :port           => 587,
-    :address        => 'smtp.mailgun.org',
-    :user_name      => ENV['MAILGUN_SMTP_LOGIN'],
-    :password       => ENV['MAILGUN_SMTP_PASSWORD'],
-    :domain         => host,
-    :authentication => :plain,
+    address:              'smtp.gmail.com',
+    port:                 587,
+    domain:               'gmail.com',
+    user_name:            ENV['GMAIL_USERNAME'], # Gmailのユーザー名（メールアドレス）
+    password:             ENV['GMAIL_PASSWORD'], # Gmailのパスワードまたはアプリパスワード
+    authentication:       :login,
   }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to

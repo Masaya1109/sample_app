@@ -40,11 +40,11 @@ Rails.application.configure do
   config.active_storage.service = :local
 
   # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 
   host = 'turbo-space-telegram-g96xp6qqq7939p6x-3000.app.github.dev'     # クラウドIDE
-  config.action_mailer.default_url_options = { host: host, protocol: 'https' }
-
+  # config.action_mailer.default_url_options = { host: host, protocol: 'https' }
+  config.action_mailer.default_url_options = { host: host }
   config.action_mailer.perform_caching = false
 
   # Print deprecation notices to the Rails logger.

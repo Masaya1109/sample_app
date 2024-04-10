@@ -17,8 +17,8 @@ module SampleApp
       address:              'smtp.gmail.com',
       port:                 587,
       domain:               'gmail.com',
-      user_name:            '', # Gmailのユーザー名（メールアドレス）
-      password:             '', # Gmailのパスワードまたはアプリパスワード
+      user_name:            't.masay.1109@gmail.com', # Gmailのユーザー名（メールアドレス）
+      password:             'uinl dibn jeea smbc', # Gmailのパスワードまたはアプリパスワード
       authentication: :login
     }
 

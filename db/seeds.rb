@@ -35,6 +35,15 @@ users = User.order(:created_at).take(6)
   users.each { |user| user.microposts.create!(content: content) }
 end
 
+# マイクロポストの一部を対象にリプライを生成する
+microposts = Micropost.order(:created_at).take(6)
+10.times do
+  content = Faker::Lorem.sentence(word_count: 5)
+  microposts.each { |micropost| micropost.replies.create!(content: content, user_id: 1) }
+  microposts.each { |micropost| micropost.replies.create!(content: content, user_id: 2) }
+  microposts.each { |micropost| micropost.replies.create!(content: content, user_id: 3) }
+end
+
 # ユーザーフォローのリレーションシップを作成する
 users = User.all
 user  = users.first

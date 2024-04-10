@@ -1,0 +1,21 @@
+<li id="reply-<%= reply.id %>">
+  <%= link_to gravatar_for(reply.user, size: 50), @micropost.user %>
+  <span class="user"><%= link_to reply.user.name, reply.user %></span>
+  <span class="content">
+    <%= reply.content %>
+    <% if reply.image.attached? %>
+      <%= image_tag reply.image.variant(:display) %>
+    <% end %>
+  </span>
+  <span class="timestamp">
+    Replied <%= time_ago_in_words(reply.created_at) %> ago.
+  </span>
+  <span class="delete">
+    <% if current_user?(reply.user) %>
+      <%= link_to "delete", micropost_reply_path( {micropost_id: @micropost.id,
+                                                   id: reply.id} ), 
+                            data: { "turbo-method": :delete,
+                                    turbo_confirm: "You sure?" } %>
+    <% end %>
+  </span>
+</li>

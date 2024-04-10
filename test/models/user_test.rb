@@ -84,6 +84,14 @@ class UserTest < ActiveSupport::TestCase
     end
   end
 
+  test "associated replies should be destroyed" do
+    @user.save
+    @user.replies.create!(content: "Cooool", micropost: Micropost.first)
+    assert_difference 'Reply.count', -1 do
+      @user.destroy
+    end
+  end
+
   test "should follow and unfollow a user" do
     michael = users(:michael)
     archer  = users(:archer)

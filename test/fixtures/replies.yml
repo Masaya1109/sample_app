@@ -1,0 +1,32 @@
+apple:
+  content: "I just ate an apple!"
+  created_at: <%= 10.minutes.ago %>
+  user: archer
+  micropost: orange
+
+lemon:
+  content: "I also ate a lemon!"
+  created_at: <%= 5.minutes.ago %>
+  user: michael
+  micropost: orange
+
+dog_video:
+  content: "Happy dogs are happy: https://youtu.be/PKffm2uI4dk"
+  created_at: <%= 30.minutes.ago %>
+  user: archer
+  micropost: cat_video
+
+most_recent_reply:
+  content: "Writing a short reply"
+  created_at: <%= Time.zone.now %>
+  user: michael
+  micropost: most_recent
+
+
+<% 30.times do |n| %>
+reply_<%= n %>:
+  content: <%= Faker::Lorem.sentence(word_count: 5) %>
+  created_at: <%= 41.days.ago %>
+  user: michael
+  micropost: orange
+<% end %>

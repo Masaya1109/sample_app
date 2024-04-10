@@ -1,0 +1,40 @@
+<div id="micropost" class="row">
+  <aside class="col-md-4">
+    <%= link_to gravatar_for(@micropost.user, size: 50), @micropost.user %>
+    <span class="user"><%= link_to @micropost.user.name, @micropost.user %></span>
+    <div class="content">
+      <div class="maincontent">
+        <%= @micropost.content %>
+        <% if @micropost.image.attached? %>
+          <%= image_tag @micropost.image.variant(:display) %>
+        <% end %>
+      </div>
+    </div>
+    <div>
+      <span class="timestamp">
+        Posted <%= time_ago_in_words(@micropost.created_at) %> ago.
+      </span>
+      <span class="delete">
+        <% if current_user?(@micropost.user) %>
+          <%= link_to "delete", @micropost, data: { "turbo-method": :delete,
+                                                turbo_confirm: "You sure?" } %>
+        <% end %>
+    </span>
+    </div>
+    <% if logged_in? %>
+      <section class="reply_form">
+        <%= render 'shared/reply_form' %>
+      </section>
+    <% end %>
+  </aside>
+  <div class="col-md-8">
+    <% @replies = @micropost.replies.paginate(page: params[:page]) %>
+    <% if @micropost.replies.any? %>
+      <h3>Replies (<%= @micropost.replies.count %>)</h3>
+      <ol class="replies">
+        <%= render @replies %>
+      </ol>
+      <%= will_paginate @replies%>
+    <% end %>
+  </div>
+</div>

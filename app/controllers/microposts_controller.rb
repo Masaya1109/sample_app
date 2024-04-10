@@ -2,6 +2,13 @@ class MicropostsController < ApplicationController
   before_action :logged_in_user, only: [:create, :destroy]
   before_action :correct_user,   only: :destroy
 
+  def show
+    @micropost = Micropost.find(params[:id])
+    if logged_in?
+      @reply = current_user.replies.build(micropost_id: @micropost.id)
+    end
+  end
+
   def create
     @micropost = current_user.microposts.build(micropost_params)
     @micropost.image.attach(params[:micropost][:image])

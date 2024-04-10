@@ -284,12 +284,56 @@ input {
       display: block;
       padding: 5px 0;
     }
+    #content-link {
+      color: black;
+      &:hover {
+        color: black;
+        text-decoration: none;
+      }
+    }
+  }
+  .timestamp, .replies-number, .delete{
+    font-size: 11px;
+    color: $gray-light;
+    margin-right: 5vw;
+    margin-top: 5px;
+  }
+}
+
+/* micropost_page */
+#micropost {
+  padding-top: 20px;
+
+  .user {
+    font-size: 1.4em;
+    letter-spacing: -1px;
+    margin-top: 0;
+    font-family: inherit;
+    font-weight: 500;
+    box-sizing: border-box
+  }
+  .content{
+    font-size: 1.5em;
+    padding-bottom: 10px;
+    
+    .maincontent {
+      margin-top: 30px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid #e8e8e8;
+    }
   }
   .timestamp {
-    color: $gray-light;
-    display: block;
-    margin-left: 10px;
-    margin-top: 5px;
+    font-size: 12px;
+  }
+  .delete {
+    float: right;
+  }
+  .reply_form {
+    margin-top: 10px;
+    
+  }
+  h3 {
+    font-size: 17px;
   }
 }
 
@@ -304,5 +348,34 @@ span.image {
   margin-top: 10px;
   input {
     border: 0;
+  }
+}
+
+/* replies */
+.replies {
+  list-style: none;
+  padding: 0;
+  font-size: 11px;
+  li {
+    padding: 10px 0;
+    border-top: 1px solid #e8e8e8;
+  }
+  .user {
+    margin-top: 5em;
+    padding-top: 0;
+  }
+  .content {
+    display: block;
+    margin-left: 60px;
+    img {
+      display: block;
+      padding: 5px 0;
+    }
+  }
+  .timestamp, .delete{
+    font-size: 11px;
+    color: $gray-light;
+    margin-right: 5vw;
+    margin-top: 5px;
   }
 }
